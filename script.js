@@ -38,12 +38,13 @@ function playGame(){
          computer = getComputerChoice().toLowerCase();// calling the choice functions before calling playground
          console.log(computer);
          user = getUserChoice().toLowerCase();// so that every time a fresh choices is generated and inputted
-         if((user != "rock") && (user != "scissor") && (user != "paper") ){ 
-            // use && function in the condition because think idiot
-            alert("invalid choice");
-            return;
+         if((user === "rock") || (user === "scissor") || (user === "paper") ){ 
+            playRound(user,computer);
+            
          }
-        playRound(user,computer);
+        else{
+            alert("invalid choice");
+        }
     }
     if(userScore>computerScore){
         alert(`User Won! \nuser - ${userScore} Computer - ${computerScore}`);
