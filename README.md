@@ -1,2 +1,5 @@
 # Rock-paper-scissor
-a simple rock-paper-scissor game
+ simple rock-paper-scissor game
+ 
+ Initial stages of this project will be just playing it in the console.
+
