@@ -16,23 +16,44 @@ function getUserChoice(){
 
 function playRound(userChoice, computerChoice){
     if(userChoice === computerChoice){
-        results.textContent = ` It is a tie`;
-        choice.textContent = `Computer Chose- ${computerChoice}`;
-        score.textContent = `user - ${userScore}, computer - ${computerScore}`;
+        alert(` It is a tie \nuser - ${userScore}, computer - ${computerScore}`);
     }
     else if((userChoice === "rock" && computerChoice === "scissor") || (userChoice === "paper" && computerChoice === "rock") || (userChoice === "scissor" && computerChoice === "paper")){
         userScore++;
-        results.textContent = `User wins`;
-        choice.textContent = `Computer Chose- ${computerChoice}`;
-        score.textContent = `user - ${userScore}, computer - ${computerScore}`;
+        alert(`User wins \nuser  - ${userScore}, computer - ${computerScore}`);
         
     }
     else{
         computerScore++;
-        results.textContent = `computer wins`;
-        choice.textContent = `Computer Chose- ${computerChoice}`;
-        score.textContent = `user - ${userScore}, computer - ${computerScore}`;
+        alert(`computer wins \nuser - ${userScore}, computer - ${computerScore}`);
         
+    }
+}
+
+function playGame(){
+    let computer;
+    let user;
+    for(let i = 1;i<=5;i++){
+        // to make the choices insensitive just make the returned values in to either lower or upper case
+         computer = getComputerChoice().toLowerCase();// calling the choice functions before calling playground
+         console.log(computer);
+         user = getUserChoice().toLowerCase();// so that every time a fresh choices is generated and inputted
+         if((user === "rock") || (user === "scissor") || (user === "paper") ){ 
+            playRound(user,computer);
+            
+         }
+        else{
+            alert("invalid choice");
+        }
+    }
+    if(userScore>computerScore){
+        alert(`User Won! \nuser - ${userScore} Computer - ${computerScore}`);
+    }
+    else if(userScore === computerScore){ // to check whether if it is a tie
+        alert(`It's a tie \nuser - ${userScore} Computer - ${computerScore}`)
+    }
+    else{
+        alert(`Computer Won \nuser - ${userScore}, Computer - ${computerScore}`);
     }
 }
 
@@ -40,35 +61,4 @@ function playRound(userChoice, computerChoice){
 
 let userScore = 0;
 let computerScore = 0;
-
-
-//creating a reference for the buttons
-
-const buttons = document.querySelectorAll("button");
-const results = document.querySelector("#results");
-const choice = document.querySelector("#choice");
-const score = document.querySelector("#score");
-const resultContainer = document.querySelector("#result");
-
-
-buttons.forEach(button =>{
-    button.addEventListener("click", e=>{
-    let userChoice = e.target.id.toLowerCase();
-    console.log(userChoice);
-    let computerChoice = getComputerChoice().toLowerCase();
-    resultContainer.classList.add("active");
-    playRound(userChoice,computerChoice);
-        if(userScore == 5){
-            results.textContent =`You won the game`;
-            score.textContent = `Human - ${userScore} Computer - ${computerScore}`;
-            userScore = 0;
-            computerScore = 0;
-        }
-        else if(computerScore == 5){
-            results.textContent = `Computer won the game`;
-            score.textContent = `Computer - ${computerScore} Human - ${userScore}`;
-            userScore = 0;
-            computerScore = 0;
-        }
-    });
-});
+playGame();
