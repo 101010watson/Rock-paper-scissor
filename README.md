@@ -1,5 +1,5 @@
 # Rock-paper-scissor
  simple rock-paper-scissor game
  
- Initial stages of this project will be just playing it in the console.
+ it is now a interactive game where user can click on the move and play the game 
 
